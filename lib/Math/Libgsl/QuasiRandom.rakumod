@@ -50,7 +50,7 @@ Math::Libgsl::QuasiRandom - An interface to libgsl, the Gnu Scientific Library -
 
 use Math::Libgsl::QuasiRandom;
 
-my Math::Libgsl::QuasiRandom $q .= new: SOBOL, 2;
+my Math::Libgsl::QuasiRandom $q .= new: :type(SOBOL), :2dimensions;
 $q.get».say for ^10;
 
 =end code
