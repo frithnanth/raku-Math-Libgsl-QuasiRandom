@@ -11,7 +11,7 @@ SYNOPSIS
 ```perl6
 use Math::Libgsl::QuasiRandom;
 
-my Math::Libgsl::QuasiRandom $q .= new: SOBOL, 2;
+my Math::Libgsl::QuasiRandom $q .= new: :type(SOBOL), :2dimensions;
 $q.get».say for ^10;
 ```
 
