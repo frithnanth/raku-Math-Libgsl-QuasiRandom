@@ -1,0 +1,33 @@
+#!/usr/bin/env perl6
+
+use Test;
+use lib 'lib';
+use Math::Libgsl::QuasiRandom;
+use Math::Libgsl::Constants;
+
+subtest 'random values' => {
+  my Math::Libgsl::QuasiRandom $q .= new: :type(SOBOL), :2dimensions;
+  is $q.name, 'sobol', 'generator name';
+  is-deeply $q.get, (.5e0, .5e0), 'get quasi-random number';
+  $q.get;
+  $q.get;
+  $q.init;
+  is-deeply $q.get, (.5e0, .5e0), 're-init generator';
+}
+
+subtest 'generator copy and clone' => {
+  my Math::Libgsl::QuasiRandom $q .= new: :type(SOBOL), :2dimensions;
+  my Math::Libgsl::QuasiRandom $dest .= new: :type(SOBOL), :2dimensions;
+  $dest.copy($q);
+  is-deeply $q.get, $dest.get, 'copy a generator';
+  my $clone = $q.clone;
+  is-deeply $q.get, $clone.get, 'clone a generator';
+}
+
+subtest 'all the possible generators' => {
+  for QRngType.enums.kv -> $k, $v {
+    lives-ok { Math::Libgsl::QuasiRandom.new: :type($v), :2dimensions }, "generator $k";
+  }
+}
+
+done-testing;

@@ -1,0 +1,59 @@
+#!/usr/bin/env perl6
+
+use Test;
+use lib 'lib';
+use Math::Libgsl::Raw::QuasiRandom;
+use Math::Libgsl::Constants;
+use NativeCall;
+
+subtest 'allocation and stuctures' => {
+  my gsl_qrng_type $t .= new;
+  ok nativesizeof($t) == 40, 'gsl_qrng_type struct length';
+  my gsl_qrng $qtest .= new;
+  ok nativesizeof($qtest) == 32, 'gsl_qrng struct length';
+  my gsl_qrng $q = mgsl_qrng_alloc(SOBOL, 2);
+  isa-ok $q, gsl_qrng, 'gsl_qrng_alloc returns a gsl_qrng';
+  is gsl_qrng_name($q), 'sobol', 'generator name';
+  lives-ok { gsl_qrng_free($q) }, 'deallocate structs';
+}
+
+subtest 'random values' => {
+  my gsl_qrng $q = mgsl_qrng_alloc(SOBOL, 2);
+  my $res = CArray[num64].allocate(2);
+  gsl_qrng_get($q, $res);
+  is-deeply $res.list, (.5e0, .5e0), 'get quasi-random number';
+  gsl_qrng_get($q, $res);
+  gsl_qrng_get($q, $res);
+  gsl_qrng_init($q);
+  gsl_qrng_get($q, $res);
+  is-deeply $res.list, (.5e0, .5e0), 're-init generator';
+  gsl_qrng_free($q);
+}
+
+subtest 'generator state and copy' => {
+  my gsl_qrng $q = mgsl_qrng_alloc(SOBOL, 2);
+  isa-ok gsl_qrng_state($q), Pointer[void], 'generator state';
+  ok gsl_qrng_size($q) == 4976, 'generator state struct size';
+  my gsl_qrng $dest = mgsl_qrng_alloc(SOBOL, 2);
+  ok gsl_qrng_memcpy($dest, $q) == GSL_SUCCESS, 'copy a generator';
+  my $res1 = CArray[num64].allocate(2);
+  my $res2 = CArray[num64].allocate(2);
+  gsl_qrng_get($q, $res1);
+  gsl_qrng_get($dest, $res2);
+  is-deeply $res1.list, $res2.list, 'synchronized generators';
+  my gsl_qrng $clone = gsl_qrng_clone($q);
+  gsl_qrng_get($q, $res1);
+  gsl_qrng_get($clone, $res2);
+  is-deeply $res1.list, $res2.list, 'cloned generators';
+  gsl_qrng_free($dest);
+  gsl_qrng_free($clone);
+  gsl_qrng_free($q);
+}
+
+subtest 'all the possible generators' => {
+  for QRngType.enums.kv -> $k, $v {
+    lives-ok { mgsl_qrng_alloc($v, 2) }, "generator $k";
+  }
+}
+
+done-testing;
