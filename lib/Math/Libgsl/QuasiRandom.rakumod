@@ -40,8 +40,6 @@ method clone(--> Math::Libgsl::QuasiRandom) {
 
 =begin pod
 
-[![Build Status](https://travis-ci.org/frithnanth/raku-Math-Libgsl-QuasiRandom.svg?branch=master)](https://travis-ci.org/frithnanth/raku-Math-Libgsl-QuasiRandom)
-
 =head1 NAME
 
 Math::Libgsl::QuasiRandom - An interface to libgsl, the Gnu Scientific Library - Quasi-Random Sequences.
