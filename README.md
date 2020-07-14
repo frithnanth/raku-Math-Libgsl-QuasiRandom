@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/frithnanth/raku-Math-Libgsl-QuasiRandom.svg?branch=master)](https://travis-ci.org/frithnanth/raku-Math-Libgsl-QuasiRandom)
 
+![Quasi Random 2D points](examples/plot.svg)
+
 NAME
 ====
 
