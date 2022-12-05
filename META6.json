@@ -1,39 +1,40 @@
 {
-  "auth" : "cpan:FRITH",
-  "authors" : [
+  "auth": "zef:FRITH",
+  "authors": [
     "Fernando Santagata"
   ],
-  "build" : {
-    "makefile-variables" : {
-      "gslhelper" : {
-        "resource" : "libraries/gslhelper"
+  "build": {
+    "makefile-variables": {
+      "gslhelper": {
+        "resource": "libraries/gslhelper"
       }
     }
   },
-  "build-depends" : [
+  "build-depends": [
     "Distribution::Builder::MakeFromJSON"
   ],
-  "builder" : "Distribution::Builder::MakeFromJSON",
-  "depends" : [
+  "builder": "Distribution::Builder::MakeFromJSON",
+  "depends": [
     "Distribution::Builder::MakeFromJSON",
     "Math::Libgsl::Constants"
   ],
-  "description" : "An interface to libgsl, the Gnu Scientific Library - Quasi-Random Sequences.",
-  "license" : "Artistic-2.0",
-  "name" : "Math::Libgsl::QuasiRandom",
-  "perl" : "6.c",
-  "provides" : {
-    "Math::Libgsl::QuasiRandom" : "lib/Math/Libgsl/QuasiRandom.rakumod",
-    "Math::Libgsl::Raw::QuasiRandom" : "lib/Math/Libgsl/Raw/QuasiRandom.rakumod"
+  "description": "An interface to libgsl, the Gnu Scientific Library - Quasi-Random Sequences.",
+  "license": "Artistic-2.0",
+  "name": "Math::Libgsl::QuasiRandom",
+  "perl": "6.c",
+  "provides": {
+    "Math::Libgsl::QuasiRandom": "lib/Math/Libgsl/QuasiRandom.rakumod",
+    "Math::Libgsl::Raw::QuasiRandom": "lib/Math/Libgsl/Raw/QuasiRandom.rakumod"
   },
-  "resources" : [
+  "resources": [
     "libraries/gslhelper"
   ],
-  "source-url" : "git://github.com/frithnanth/raku-Math-Libgsl-QuasiRandom.git",
-  "tags" : [
+  "source-url": "git://github.com/frithnanth/raku-Math-Libgsl-QuasiRandom.git",
+  "tags": [
     "math",
     "nativecall"
   ],
-  "test-depends" : [ ],
-  "version" : "0.0.1"
+  "test-depends": [
+  ],
+  "version": "0.0.1"
 }

@@ -1,6 +1,6 @@
 use v6.c;
 
-unit class Math::Libgsl::QuasiRandom:ver<0.0.1>:auth<cpan:FRITH>;
+unit class Math::Libgsl::QuasiRandom:ver<0.0.1>:auth<zef:FRITH>;
 
 use Math::Libgsl::Raw::QuasiRandom;
 use Math::Libgsl::Exception;
@@ -46,7 +46,7 @@ Math::Libgsl::QuasiRandom - An interface to libgsl, the Gnu Scientific Library -
 
 =head1 SYNOPSIS
 
-=begin code :lang<perl6>
+=begin code :lang<raku>
 
 use Math::Libgsl::QuasiRandom;
 use Math::Libgsl::Constants;
@@ -86,7 +86,7 @@ The generator state is also copied, so the source and destination generators del
 This method clones the current object and returns a new object.
 The generator state is also cloned, so the source and destination generators deliver the same values.
 
-=begin code :lang<perl6>
+=begin code :lang<raku>
 
 my $q = Math::Libgsl::QuasiRandom.new;
 my $clone = $q.clone;
@@ -102,7 +102,7 @@ The excellent C Library manual is available here L<https://www.gnu.org/software/
 
 This module requires the libgsl library to be installed. Please follow the instructions below based on your platform:
 
-=head2 Debian Linux and Ubuntu 20.04
+=head2 Debian Linux and Ubuntu 20.04+
 
 =begin code
 sudo apt install libgsl23 libgsl-dev libgslcblas0

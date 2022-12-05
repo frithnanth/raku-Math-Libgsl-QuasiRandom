@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/frithnanth/raku-Math-Libgsl-QuasiRandom.svg?branch=master)](https://travis-ci.org/frithnanth/raku-Math-Libgsl-QuasiRandom)
+[![Actions Status](https://github.com/frithnanth/raku-Math-Libgsl-QuasiRandom/workflows/test/badge.svg)](https://github.com/frithnanth/raku-Math-Libgsl-QuasiRandom/actions)
 
 ![Quasi Random 2D points](examples/plot.svg)
 
@@ -10,7 +10,7 @@ Math::Libgsl::QuasiRandom - An interface to libgsl, the Gnu Scientific Library -
 SYNOPSIS
 ========
 
-```perl6
+```raku
 use Math::Libgsl::QuasiRandom;
 use Math::Libgsl::Constants;
 
@@ -47,7 +47,7 @@ This method copies the source generator **$src** into the current one and return
 
 This method clones the current object and returns a new object. The generator state is also cloned, so the source and destination generators deliver the same values.
 
-```perl6
+```raku
 my $q = Math::Libgsl::QuasiRandom.new;
 my $clone = $q.clone;
 ```
@@ -62,8 +62,8 @@ Prerequisites
 
 This module requires the libgsl library to be installed. Please follow the instructions below based on your platform:
 
-Debian Linux and Ubuntu 20.04
-------------
+Debian Linux and Ubuntu 20.04+
+------------------------------
 
     sudo apt install libgsl23 libgsl-dev libgslcblas0
 
