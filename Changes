@@ -1,6 +1,8 @@
 Revision history for Math-Libgsl-QuasiRandom
 
 {{$NEXT}}
+
+0.0.2  2022-12-05T12:47:52+01:00
     - Use zef ecosystem
 
 0.0.1  2020-06-02T19:32:32+02:00

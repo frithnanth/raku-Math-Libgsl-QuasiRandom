@@ -1,7 +1,5 @@
 [![Actions Status](https://github.com/frithnanth/raku-Math-Libgsl-QuasiRandom/workflows/test/badge.svg)](https://github.com/frithnanth/raku-Math-Libgsl-QuasiRandom/actions)
 
-![Quasi Random 2D points](examples/plot.svg)
-
 NAME
 ====
 
