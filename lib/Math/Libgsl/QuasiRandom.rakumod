@@ -31,7 +31,7 @@ method get(--> List) {
 method name(--> Str) { gsl_qrng_name($!q) }
 method copy(Math::Libgsl::QuasiRandom $src) {
   my $ret = gsl_qrng_memcpy($!q, $src.q);
-  fail X::Libgsl.new: errno => $ret, error => "Can't copy the generator" if $ret ≠ GSL_SUCCESS;
+  X::Libgsl.new(errno => $ret, error => "Can't copy the generator").throw if $ret ≠ GSL_SUCCESS;
   return self;
 }
 method clone(--> Math::Libgsl::QuasiRandom) {
