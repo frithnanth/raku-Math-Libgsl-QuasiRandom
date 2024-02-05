@@ -1,6 +1,7 @@
 Revision history for Math-Libgsl-QuasiRandom
 
 {{$NEXT}}
+    - Drop the obsolete .absolute call :-)
 
 0.1.0  2023-01-03T12:56:27Z
     - Methods that return self throw on error, instead of failing
